@@ -101,13 +101,13 @@ LTC.add_instructions(
  
 for opamp in ('AD712', 'AD820'):
     # Setting a model of the U1 Component. Note that subcircuits need the X prefix
-    LTC.set_element_model('XU1', opamp):
-        for supply_voltage in (5, 10, 15):
-            LTC.set_component_value('V1', supply_voltage)  # Set a voltage source value
-            LTC.set_component_value('V2', -supply_voltage)
-            rawfile, logfile = LTC.run()  # Runs the simulation with the updated netlist
-            # The run() returns the RAW filename and LOG filenames so that can be processed with
-            # the LTSpice_ReadRaw and LTSteps modules.
+    LTC.set_element_model('XU1', opamp)
+    for supply_voltage in (5, 10, 15):
+        LTC.set_component_value('V1', supply_voltage)  # Set a voltage source value
+        LTC.set_component_value('V2', -supply_voltage)
+        rawfile, logfile = LTC.run()  # Runs the simulation with the updated netlist
+        # The run() returns the RAW filename and LOG filenames so that can be processed with
+        # the LTSpice_ReadRaw and LTSteps modules.
 
 LTC.reset_netlist()  # This resets all the changes done to the checklist
 LTC.add_instructions(  # Changing the simulation file
